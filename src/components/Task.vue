@@ -2,25 +2,30 @@
   <li class="task" :class="[task.reminder ? 'reminder' : '']">
     <div>
       <h2>
-        {{ task.text }}
+        {{ task.title }}
       </h2>
-      <p>{{ task.day }}</p>
+      <p>{{ task.description }}</p>
     </div>
-    <i class="fa-solid fa-circle-xmark" @click="onDelete(task.id)"></i>
+    <i class="fa-solid fa-circle-xmark" @click="handleDelete(task.id)"></i>
   </li>
 </template>
 
 <script>
+import { deleteTodo } from "../db";
 export default {
   name: "Task",
   props: {
     task: Object,
   },
   methods: {
-    onDelete(id) {
-      console.log(id);
-    }
-  }
+    handleDelete(id) {
+      const confirmed = confirm("are you sure you want to delete?");
+      if (confirmed) {
+        deleteTodo(id);
+        location.reload();
+      }
+    },
+  },
 };
 </script>
 

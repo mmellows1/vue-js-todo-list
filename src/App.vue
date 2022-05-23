@@ -1,33 +1,36 @@
 <script>
 import Header from "./components/Header.vue";
 import Tasks from "./components/Tasks.vue";
+import { createTodo, getTodos } from "./db";
 
 export default {
   name: "App",
+  data() {
+    return {
+      title: "",
+      description: "",
+      tasks: [],
+    };
+  },
   components: {
     Header,
     Tasks,
   },
-  data() {
-    return {
-      tasks: [],
-    };
+  methods: {
+    handleFormSubmit(e) {
+      e.preventDefault();
+      const { title, description } = this;
+      const data = {
+        title,
+        description,
+      };
+
+      createTodo(data);
+      this.tasks = getTodos();
+    },
   },
   created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: "Doctors Appointment",
-        day: "March 1st at 2:30pm",
-        reminder: true,
-      },
-      {
-        id: 2,
-        text: "Meeting at School",
-        day: "March 3rd at 1:30pm",
-        reminder: false,
-      },
-    ];
+    this.tasks = getTodos();
   },
 };
 </script>
@@ -37,6 +40,16 @@ export default {
     <header>
       <Header title="Task Tracker" />
     </header>
+
+    <form @submit="(e) => handleFormSubmit(e)">
+      <input v-model="title" name="title" placeholder="title" />
+      <textarea
+        v-model="description"
+        name="description"
+        placeholder="description"
+      />
+      <button>submit</button>
+    </form>
 
     <main>
       <Tasks :tasks="tasks" />
