@@ -1,9 +1,11 @@
+import { v4 } from "uuid";
+
 const db = () => {
   return window.localStorage;
 };
 
-export const createTodo = () => {
-  db().setItem();
+export const createTodo = (data) => {
+  db().setItem(v4(), data);
 };
 
 export const updateTodo = (id, data) => {
