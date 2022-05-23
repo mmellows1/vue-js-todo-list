@@ -17,8 +17,20 @@ export const updateTodo = (id, data) => {
     return;
   }
 
-  const existingTodo = getTodo(id);
-  db().setItem(id, { ...existingTodo, data });
+  console.log(1, id, data);
+
+  let existingTodos = getTodos();
+
+  existingTodos.forEach((value, index) => {
+    if (value.id == id) {
+      existingTodos[index] = { ...value, ...data };
+      console.log(2, existingTodos[index]);
+    }
+  });
+
+  console.log(3, existingTodos);
+
+  db().setItem("todos", JSON.stringify(existingTodos));
 };
 
 export const deleteTodo = (id) => {

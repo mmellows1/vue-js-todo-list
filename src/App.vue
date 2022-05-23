@@ -51,7 +51,7 @@ export default {
       <button>submit</button>
     </form>
 
-    <main>
+    <main class="bg--dark page page--spaced-v">
       <Tasks :tasks="tasks" />
     </main>
   </div>
