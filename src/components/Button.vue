@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick()" :style="{ background: color }" class="btn">
+  <button @click="onClick()" class="button" :class="`button--${color}`">
     <slot></slot>
   </button>
 </template>
@@ -15,12 +15,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-button {
-  border: none;
-  color: white;
-  font-weight: 900;
-  padding: 14px 18px;
-}
-</style>

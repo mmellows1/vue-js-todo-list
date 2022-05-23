@@ -1,4 +1,5 @@
 <script>
+import Button from "./components/Button.vue";
 import Header from "./components/Header.vue";
 import Tasks from "./components/Tasks.vue";
 import { createTodo, getTodos } from "./db";
@@ -15,6 +16,7 @@ export default {
   components: {
     Header,
     Tasks,
+    Button,
   },
   methods: {
     handleFormSubmit(e) {
@@ -41,14 +43,20 @@ export default {
       <Header title="Task Tracker" />
     </header>
 
-    <form @submit="(e) => handleFormSubmit(e)">
-      <input v-model="title" name="title" placeholder="title" />
+    <form @submit="(e) => handleFormSubmit(e)" class="mb-sm">
+      <input
+        class="input input--border-bottom mb-sm"
+        v-model="title"
+        name="title"
+        placeholder="Enter a title"
+      />
       <textarea
+        class="input input--border-bottom mb-sm"
         v-model="description"
         name="description"
-        placeholder="description"
+        placeholder="Enter a description, 255 max..."
       />
-      <button>submit</button>
+      <Button color="green">Submit</Button>
     </form>
 
     <main class="bg--dark page page--spaced-v">
@@ -57,9 +65,9 @@ export default {
   </div>
 </template>
 
-<style>
+<style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;700&display=swap");
-@import "./assets/base.css";
+@import "./assets/init.scss";
 
 * {
   font-family: "Radio Canada";

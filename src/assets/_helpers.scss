@@ -1,0 +1,29 @@
+$spacing: (
+  "sm": 10px,
+  "md": 20px,
+  "lg": 40px,
+  "xl": 80px,
+);
+
+$types: (
+  "m": "margin",
+  "p": "padding",
+);
+
+$directions: (
+  "l": "left",
+  "r": "right",
+  "t": "top",
+  "b": "bottom",
+);
+
+// e.g. ml-xl
+@each $type, $type-val in $types {
+  @each $space, $space-val in $spacing {
+    @each $direction, $direction-val in $directions {
+      .#{$type}#{$direction}-#{$space} {
+        #{$type-val}-#{$direction-val}: $space-val;
+      }
+    }
+  }
+}

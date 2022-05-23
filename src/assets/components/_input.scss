@@ -1,0 +1,31 @@
+.input {
+  border: 1px solid $grey;
+  padding: 10px;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+
+  @each $name, $color-map in $colors {
+    &--#{$name} {
+      border-color: map-get($color-map, "background");
+      background-color: lighten(map-get($color-map, "background"), 50%);
+      color: map-get($color-map, "background");
+
+      &::placeholder {
+        color: map-get($color-map, "background");
+      }
+    }
+  }
+
+  &--border-bottom {
+    border: none;
+    border-bottom: 1px solid $grey;
+
+    &:focus {
+      border-bottom: 1px solid $grey;
+    }
+  }
+}
