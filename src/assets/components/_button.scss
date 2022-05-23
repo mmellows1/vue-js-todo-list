@@ -1,0 +1,15 @@
+// @use "config/color" as *;
+
+.button {
+  border: none;
+  color: white;
+  font-weight: 900;
+  padding: 14px 18px;
+
+  @each $name, $color-map in $colors {
+    &--#{$name} {
+      background-color: map-get($color-map, "background");
+      color: map-get($color-map, "foreground");
+    }
+  }
+}
