@@ -28,4 +28,11 @@
       border-bottom: 1px solid $grey;
     }
   }
+  &--no-bg {
+    background-color: transparent;
+  }
+
+  &--no-border {
+    border: none;
+  }
 }

@@ -1,0 +1,51 @@
+.tag {
+  $this: &;
+
+  &__form {
+    padding: 10px;
+    border: 1px solid $brand;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 0;
+    list-style: none;
+    margin-left: -5px;
+  }
+
+  &__item {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin: 0 5px;
+    @each $name, $color-map in $colors {
+      &--#{$name} {
+        background-color: map-get($color-map, "background");
+        color: map-get($color-map, "foreground");
+      }
+    }
+  }
+
+  &--fixed-sidebar {
+    position: fixed;
+    max-width: 360px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    #{$this}__list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      #{$this}__item {
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+}

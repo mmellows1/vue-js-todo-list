@@ -1,0 +1,26 @@
+.radio {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--form-background);
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border-radius: 50%;
+
+  @each $name, $color-map in $colors {
+    &--#{$name} {
+      background-color: map-get($color-map, "background");
+      color: map-get($color-map, "foreground");
+      &:checked {
+        background-color: lighten(map-get($color-map, "background"), 30%);
+        &:before {
+          content: "";
+          outline: 2px solid black;
+        }
+      }
+    }
+  }
+}

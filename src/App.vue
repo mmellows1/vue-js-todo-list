@@ -3,6 +3,7 @@ import Button from "./components/Button.vue";
 import Header from "./components/Header.vue";
 import Tasks from "./components/Tasks.vue";
 import { createTodo, getTodos } from "./db";
+import TasksSection from "./sections/TasksSection.vue";
 
 export default {
   name: "App",
@@ -17,8 +18,12 @@ export default {
     Header,
     Tasks,
     Button,
+    TasksSection,
   },
   methods: {
+    handleTagFormSubmit(e) {
+      e.preventDefault(e);
+    },
     handleFormSubmit(e) {
       e.preventDefault();
       const { title, description } = this;
@@ -42,6 +47,8 @@ export default {
     <header>
       <Header title="Task Tracker" />
     </header>
+
+    <TasksSection />
 
     <form @submit="(e) => handleFormSubmit(e)" class="mb-sm">
       <input

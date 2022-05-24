@@ -1,5 +1,6 @@
 <template>
   <li class="task" :class="[task.reminder ? 'reminder' : '']">
+    <Tags />
     <div class="task__wrapper">
       <form class="task__form" v-if="isEditing" @submit="handleSubmit">
         <input
@@ -31,6 +32,7 @@
 
 <script>
 import { deleteTodo, updateTodo } from "../db";
+import Tags from "./Tags.vue";
 export default {
   name: "Task",
   props: {
@@ -56,5 +58,6 @@ export default {
       }
     },
   },
+  components: { Tags },
 };
 </script>

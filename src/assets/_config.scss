@@ -1,13 +1,32 @@
 $grey: #7f8c8d;
 $white: #ffffff;
+$brand: #323232;
+$red: #e74c3c;
+$green: #27ae60;
 
 $colors: (
+  "white": (
+    "background": $white,
+    "foreground": $brand,
+  ),
   "green": (
     "background": #27ae60,
     "foreground": $white,
   ),
   "brand": (
     "background": #323232,
+    "foreground": $white,
+  ),
+  "red": (
+    "background": #e74c3c,
+    "foreground": $white,
+  ),
+  "blue": (
+    "background": #3498db,
+    "foreground": $white,
+  ),
+  "purple": (
+    "background": #8e44ad,
     "foreground": $white,
   ),
 );
